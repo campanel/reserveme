@@ -12,7 +12,7 @@
             <tr>
                 <th>Username</th>
                 <th>Email</th>
-                <th colspan="3" >Action</th>
+                <th colspan="3" >Ações</th>
             </tr>
             </thead>
 
