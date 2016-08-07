@@ -27,4 +27,7 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
 //CRUD usuarios
 Route::resource('users', 'UserController');
 
+//CRUD salas
+Route::resource('salas', 'SalaController');
+
 
