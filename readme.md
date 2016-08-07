@@ -1,6 +1,14 @@
 # Reserveme
+Sistema de fila virtual para uso de salas de reuniões
 
-## Ambiente
+### Pré-requisitos
+* PHP >= 5.5.9
+* OpenSSL PHP Extension
+* PDO PHP Extension
+* Mbstring PHP Extension
+* Tokenizer PHP Extension
+
+### Criar ambiente
 composer create-project --prefer-dist laravel/laravel reserveme
 
 cd reserveme
@@ -8,12 +16,19 @@ cd reserveme
 chmod 777 -R storage/
 chmod 777 -R bootstrap/cache/
 
+### Criar Banco Mysql
 mysql> create database reserveme;
 
-Configurar .env com os dados do seu mysql
+### Configurar credencias do Banco de Dados
+editar .env com os dados do seu mysql
 
+### Criar Tabelas
 php artisan migrate
 
+### Popular Banco de dados com dados pré-definidos
+php artisan db:seed
+
+### Subir aplicação
 php artisan serve
 
 ## Laravel
