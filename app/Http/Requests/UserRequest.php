@@ -23,10 +23,24 @@ class UserRequest extends Request
      */
     public function rules()
     {
+
+        $user = $this->route('users');
+
+        if ($this->method() == 'PUT' || $this->method() == 'PATCH')
+        {
+            // Update
+            $emailRule = 'required|email|unique:users,id,'.$user->id;
+        }
+        else
+        {
+            // Create
+            $emailRule = 'required|email|unique:users';
+        }
+
         return [
             'username' => 'required|min:3',
             'password' => 'required|min:3',
-            'email' => 'required|email'
+            'email' => $emailRule
         ];
     }
 }
