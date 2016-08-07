@@ -14,6 +14,7 @@ composer create-project --prefer-dist laravel/laravel reserveme
 cd reserveme
 
 chmod 777 -R storage/
+
 chmod 777 -R bootstrap/cache/
 
 ### Criar Banco Mysql
