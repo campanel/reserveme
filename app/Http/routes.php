@@ -30,4 +30,7 @@ Route::resource('users', 'UserController');
 //CRUD salas
 Route::resource('salas', 'SalaController');
 
+//CRUD reservas
+Route::resource('reservas', 'ReservaController');
+
 
