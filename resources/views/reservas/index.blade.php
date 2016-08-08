@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('content')
-    <h1>Salas</h1>
+    <h1>Reserva de Salas</h1>
 
     <a href="{{ URL::route('reservas.create') }}" class="btn btn-primary"> Nova Reserva </a>
     <hr/>
@@ -12,6 +12,9 @@
             <tr>
                 <th>Nome</th>
                 <th>Descrição</th>
+                <th>Sala</th>
+                <th>Usuário</th>
+                <th>Início</th>
                 <th colspan="3" >Ações</th>
             </tr>
             </thead>
@@ -21,6 +24,9 @@
                 <tr>
                     <td>{{ $reserva->nome }}</td>
                     <td>{{ $reserva->descricao }}</td>
+                    <td>{{ $reserva->sala_nome }}</td>
+                    <td>{{ $reserva->user_nome }}</td>
+                    <td>{{ $reserva->data_inicio }}</td>
                     <td>
                         {{ link_to_route('reservas.show', 'Detalhes',
                             array($reserva->id),

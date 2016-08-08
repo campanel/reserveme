@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ReservaRequest;
 use App\Reserva;
 use App\Sala;
+use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class ReservaController extends Controller
 {
@@ -23,6 +26,18 @@ class ReservaController extends Controller
     {
         $reservas = Reserva::all();
         //return $reservas;
+
+        $add = $reservas->map(function ($reserva) {
+            $sala = Sala::find($reserva['sala_id']);
+            $user = User::find($reserva['user_id']);
+            //dd($user);
+
+            $reserva['sala_nome'] =$sala->nome;
+            $reserva['user_nome'] =$user->username;
+            return $reserva;
+        });
+        //dd($reservas);
+
         return view('reservas.index', compact('reservas'));
 
     }
@@ -34,9 +49,14 @@ class ReservaController extends Controller
      */
     public function create()
     {
-        $salas = Sala::lists('nome','id');
+        $listSalas = Sala::lists('nome','id')->all();
 
-        return view('reservas.create', compact('salas'));
+        for($i=0 ;$i < 24;$i++){
+            $fim = $i + 1;
+            $horas[$i] = $i.':00 - '.$fim.':00';
+        }
+
+        return view('reservas.create', compact('listSalas','horas'));
     }
 
     /**
@@ -46,7 +66,17 @@ class ReservaController extends Controller
      */
     public function store(ReservaRequest $request)
     {
-        Reserva::create($request->all());
+        if(!$request->checkSala()){
+            flash('A Sala já esta reservada neste horário.', 'danger');
+            return Redirect::back()->withInput($request->toArray());
+        }
+
+        if(!$request->checkUser()){
+            flash('Você já tem compromisso neste horário.', 'danger');
+            return Redirect::back()->withInput($request->toArray());
+        }
+
+        Reserva::create($request->toArray());
 
         flash('Reserva criada com Sucesso!');
 
@@ -72,7 +102,15 @@ class ReservaController extends Controller
      */
     public function edit(Reserva $reserva)
     {
-        return view('reservas.edit', compact('reserva'));
+
+        $listSalas = Sala::lists('nome','id')->all();
+
+        for($i=0 ;$i < 24;$i++){
+            $fim = $i + 1;
+            $horas[$i] = $i.':00 - '.$fim.':00';
+        }
+
+        return view('reservas.edit', compact('reserva','listSalas','horas'));
     }
 
     /**
@@ -83,7 +121,17 @@ class ReservaController extends Controller
      */
     public function update( Reserva $reserva, ReservaRequest $request)
     {
-        $reserva->update($request->all());
+        if(!$request->checkSala()){
+            flash('A Sala já esta reservada neste horário.', 'danger');
+            return Redirect::back()->withInput($request->toArray());
+        }
+
+        if(!$request->checkUser()){
+            flash('Você já tem compromisso neste horário.', 'danger');
+            return Redirect::back()->withInput($request->toArray());
+        }
+
+        $reserva->update($request->toArray());
 
         flash('Reserva Atualizada com Sucesso!');
         return redirect('reservas')->with('flash_message');
@@ -97,6 +145,14 @@ class ReservaController extends Controller
      */
     public function destroy(Reserva $reserva)
     {
+        $loginUserId = Auth::user()->id;
+        $reservaUserId = $reserva->user_id;
+
+        if($loginUserId != $reservaUserId){
+            flash('A reserva só pode ser deletada pelo dono.', 'danger');
+            return Redirect::back();
+        }
+
         $reserva->delete();
         flash('Reserva Deletada com Sucesso!');
         return redirect('reservas')->with('flash_message');

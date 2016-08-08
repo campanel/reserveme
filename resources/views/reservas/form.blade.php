@@ -10,13 +10,22 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('user_id', 'user_id:') !!}
-    {!! Form::text('user_id', null, ['class' => 'form-control']) !!}
+    {!! Form::label('sala', 'Sala:') !!}
+
+    {!! Form::select('sala_id', $listSalas, null, ['class' => 'form-control']) !!}
+
 </div>
 
 <div class="form-group">
-    {!! Form::label('sala', 'Sala:') !!}
 
+    {!! Form::label('data', 'Data:') !!}
+    {!! Form::input('date', 'date',date("Y-m-d"), ['class' => 'form-control']) !!}
+
+</div>
+
+<div class="form-group">
+    {!! Form::label('hora', 'Hora:') !!}
+    {!! Form::select('hora', $horas, date("d"), ['id' => 'tag_list', 'class' => 'form-control']) !!}
 </div>
 
 

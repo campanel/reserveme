@@ -7,8 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Reserva extends Model
 {
     protected $fillable = [
-        'nome', 'descricao', 'user_id', 'sala_id', 'data_inicio', 'data_fim'
+        'nome', 'descricao', 'user_id', 'sala_id', 'data_inicio'
     ];
+
+    protected $dates = ['data_inicio'];
 
     /**
      * Get the users associated with the given reservas.
