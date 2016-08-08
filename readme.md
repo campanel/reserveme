@@ -1,6 +1,10 @@
 # Reserveme
 Sistema de fila virtual para uso de salas de reuniões
 
+
+![alt tag](https://raw.githubusercontent.com/campanel/reserveme/master/reserveme.png)
+
+
 ### Pré-requisitos
 * PHP >= 5.5.9
 * OpenSSL PHP Extension
