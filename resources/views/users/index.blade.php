@@ -1,13 +1,14 @@
 @extends('app')
 
 @section('content')
-    <h1>Usuários</h1>
 
-    <a href="{{ URL::route('users.create') }}" class="btn btn-primary"> Novo Usuário </a>
-    <hr/>
+    <div class="mdl-card__supporting-text">
+        <a href="{{ URL::route('users.create') }}" id="new" class=" mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white">Novo Usuário</a>
+    </div>
 
+    <div class="mdl-card__supporting-text">
     @if ($users->count())
-        <table class="table table-striped table-bordered">
+            <table class="mdl-data-table mdl-js-data-table  mdl-shadow--2dp table table-striped">
             <thead>
             <tr>
                 <th>Username</th>
@@ -41,5 +42,5 @@
     @else
         Sem dados para exibir.
     @endif
-
+</div>
 @stop

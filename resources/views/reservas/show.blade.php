@@ -2,11 +2,7 @@
 
 @section('content')
 
-    <h1>{{ $reserva->nome }}</h1>
-
-    <hr/>
-
-    <table class="table">
+    <table class="mdl-data-table mdl-js-data-table  mdl-shadow--2dp table table-striped">
         <thead>
         <tr>
             <th>Nome</th>

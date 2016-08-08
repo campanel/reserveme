@@ -1,21 +1,22 @@
 
-<div class="form-group">
-    {!! Form::label('username', 'Username:') !!}
-    {!! Form::text('username', null, ['class' => 'form-control']) !!}
+<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    {!! Form::text('username', null, ['class' => 'mdl-textfield__input']) !!}
+    {!! Form::label('username', 'Username:',['class' => 'mdl-textfield__label']) !!}
 </div>
-
-<div class="form-group">
-    {!! Form::label('email', 'email:') !!}
-    {!! Form::text('email', null, ['class' => 'form-control']) !!}
+</br>
+<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    {!! Form::text('email', null, ['class' => 'mdl-textfield__input']) !!}
+    {!! Form::label('email', 'email:',['class' => 'mdl-textfield__label']) !!}
 </div>
-
-<div class="form-group">
-    {!! Form::label('password', 'Senha:') !!}
-    <input type="password" class="form-control" name="password">
+</br>
+<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <input type="password" class="mdl-textfield__input" name="password">
+    {!! Form::label('password', 'Senha:',['class' => 'mdl-textfield__label']) !!}
 
 </div>
-
-<div class="form-group">
-    {!! Form::submit($submitButtonText, ['class' => 'btn btn-primary form-control']) !!}
+</br>
+</br>
+<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    {!! Form::submit($submitButtonText, ['class' => 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white']) !!}
 </div>
 

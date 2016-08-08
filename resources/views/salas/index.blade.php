@@ -1,13 +1,14 @@
 @extends('app')
 
 @section('content')
-    <h1>Salas</h1>
 
-    <a href="{{ URL::route('salas.create') }}" class="btn btn-primary"> Nova Sala </a>
-    <hr/>
+    <div class="mdl-card__supporting-text">
+        <a href="{{ URL::route('salas.create') }}" id="new" class=" mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white">Nova Sala</a>
+    </div>
 
+    <div class="mdl-card__supporting-text">
     @if ($salas->count())
-        <table class="table table-striped table-bordered">
+            <table class="mdl-data-table mdl-js-data-table  mdl-shadow--2dp table table-striped">
             <thead>
             <tr>
                 <th>Nome</th>
@@ -22,7 +23,7 @@
                     <td>{{ $sala->nome }}</td>
                     <td>{{ $sala->descricao }}</td>
                     <td>
-                        {{ link_to_route('salas.show', 'Detalhes', array($sala->id), array('class' => 'btn btn-info')) }}
+                        {{ link_to_route('salas.show', 'Detalhes', array($sala->id), array('class' => 'btn btn-info ')) }}
                     </td>
                     <td>
                         {{ link_to_route('salas.edit', 'Editar', array($sala->id), array('class' => 'btn btn-warning')) }}
@@ -41,5 +42,5 @@
     @else
         Sem dados para exibir.
     @endif
-
+    </div>
 @stop

@@ -2,11 +2,7 @@
 
 @section('content')
 
-    <h1>{{ $user->username }}</h1>
-
-    <hr/>
-
-    <table class="table">
+    <table class="mdl-data-table mdl-js-data-table  mdl-shadow--2dp table table-striped">
         <thead>
         <tr>
             <th>Username</th>
@@ -28,6 +24,4 @@
 
         </tr>
     </table>
-
-
 @stop
