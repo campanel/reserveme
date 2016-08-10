@@ -26,6 +26,7 @@ class ReservaController extends Controller
     {
         $reservas = Reserva::all();
         //return $reservas;
+        $user = 'cleber.campanel';
 
         $add = $reservas->map(function ($reserva) {
             $sala = Sala::find($reserva['sala_id']);
@@ -38,7 +39,9 @@ class ReservaController extends Controller
         });
         //dd($reservas);
 
-        return view('reservas.index', compact('reservas'));
+
+
+        return view('reservas.index', compact('reservas', 'user'));
 
     }
 

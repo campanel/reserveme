@@ -17,18 +17,17 @@
 
                     <li class="mdl-list__item mdl-list__item--three-line">
                         <span class="mdl-list__item-primary-content">
-                          <i class="material-icons mdl-list__item-avatar">person</i>
                             <span class="mdl-list__item-text-body">
                                 {{ $reserva->descricao }}
                             </span>
-                            <span>
-                                {{ $reserva->user_nome }}
+                            <span class="mdl-list__item-text-body">
+                              {{ $reserva->data_inicio }}
                             </span>
                         </span>
+
                         <span class="mdl-list__item-secondary-content">
-                            <span class="mdl-list__item-text-body">
-                              <i class="material-icons">alarm</i> {{ $reserva->data_inicio }}
-                            </span>
+                            <i class="material-icons mdl-list__item-avatar ">person</i>
+                            <span class="mdl-list__item-text-body">{{ $reserva->user_nome }}</span>
                         </span>
                     </li>
                 </div>
