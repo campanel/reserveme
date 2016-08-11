@@ -46,7 +46,6 @@
             </div>
             <br>
         @endforeach
-
     @else
         Sem dados para exibir.
     @endif
