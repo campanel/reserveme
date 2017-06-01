@@ -13,13 +13,19 @@ Sistema de fila virtual para uso de salas de reuniões
 * Tokenizer PHP Extension
 
 ### Criar ambiente
-composer create-project --prefer-dist laravel/laravel reserveme
+git clone https://github.com/campanel/reserveme.git
 
 cd reserveme
+
+composer update
 
 chmod 777 -R storage/
 
 chmod 777 -R bootstrap/cache/
+
+cp .env.example .env
+
+php artisan  key:generate
 
 ### Criar Banco Mysql
 mysql> create database reserveme;
@@ -35,6 +41,10 @@ php artisan db:seed
 
 ### Subir aplicação
 php artisan serve
+
+### login
+Usuário: user@user.com
+Senha: user
 
 ## Laravel
 
